@@ -1,0 +1,11 @@
+version: "3"
+services:
+  nginx:
+    build: nginx/prod
+    ports:
+      - "8002:80"
+  php:
+    build: php/prod
+  phpmyadmin:
+    ports:
+      - "8001:80"
