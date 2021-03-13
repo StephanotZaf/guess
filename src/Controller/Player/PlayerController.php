@@ -7,14 +7,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class PlayerController
- * @package App\Controller\Player
+ * Class PlayerController.
  */
 class PlayerController
 {
-    /**
-     * @var CreatePlayerHandler
-     */
     private CreatePlayerHandler $createPlayer;
 
     /**
@@ -40,7 +36,7 @@ class PlayerController
                     'username' => $playerArray['username'],
                     'email' => $playerArray['email'],
                     'password' => $playerArray['password'],
-                    'avatar' => $playerArray['avatar']
+                    'avatar' => $playerArray['avatar'],
                 ]
             );
         } catch (\Exception $e) {

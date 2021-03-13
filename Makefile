@@ -7,7 +7,7 @@ up: # up
 	echo "Application is running at http://localhost:81"
 	make schema-update
 
-
+# docker
 dc-rebuild: # up
 	@cd docker && docker-compose up -d --build
 
@@ -34,6 +34,8 @@ db-recreate: # recreate db
 					@cd docker && docker-compose exec php bin/console doctrine:database:drop --force
 					@cd docker && docker-compose exec php bin/console doctrine:database:create
 					@cd docker && docker-compose exec php bin/console doctrine:schema:update --force
+dc-exec-php: # up
+	@cd docker && docker-compose exec php bash
 
 sf-cc:	# schema-update
 				@cd docker && docker-compose exec php bin/console cache:clear

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Application;
 
 use App\Domain\Player\Player;
@@ -8,19 +7,12 @@ use App\Domain\Player\PlayerRepositoryInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * Class CreatePlayerHandler
- * @package App\Application
+ * Class CreatePlayerHandler.
  */
 class CreatePlayerHandler
 {
-    /**
-     * @var PlayerRepositoryInterface
-     */
     private PlayerRepositoryInterface $playerRepository;
 
-    /**
-     * @var UserPasswordEncoderInterface
-     */
     private UserPasswordEncoderInterface $encoder;
 
     /**
