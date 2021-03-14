@@ -1,9 +1,10 @@
 init: # init
-	# @cd docker && docker-compose build --force-rm --no-cache
-	#make ci
+	@cd docker && docker-compose build --force-rm --no-cache
+	make ci
+	@cp -n .env .env.local
 	make db-create
-	#make db-update
-	#make db-fixtures-load
+	make db-update
+	make db-load
 
 dc-up: # docker compose up
 	@cd docker && docker-compose up -d
@@ -20,6 +21,9 @@ dc-stop: # docker compose stop
 dc-exec-php: # up
 	@cd docker && docker-compose exec php bash
 
+dc-exec-mysql: # up
+	@cd docker && docker-compose exec mysql bash
+
 db-create:	# schema-create
 	@cd docker && docker-compose exec php bin/console doctrine:database:create --if-not-exists
 
@@ -32,11 +36,11 @@ db-recreate: # recreate db
 	@cd docker && docker-compose exec php bin/console doctrine:database:create
 	@cd docker && docker-compose exec php bin/console doctrine:schema:update --force
 
+db-load: # load fixtures
+	@cd docker && docker-compose exec php bin/console doctrine:fixtures:load --no-interaction
+
 sf-cc:	# schema-update
 	@cd docker && docker-compose exec php bin/console cache:clear
-
-db-fixtures-load: # load fixtures
-	@cd docker && docker-compose exec php bin/console doctrine:fixtures:load --no-interaction
 
 ci: # composer install
 	@cd docker && docker-compose exec php composer install
