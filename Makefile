@@ -37,12 +37,16 @@ dc-exec-mysql: # goto mysql container
 	@cd docker && docker-compose exec mysql bash
 
 .PHONY: dc-exec-nginx
-dc-exec-mysql: # goto nginx container
+dc-exec-nginx: # goto nginx container
 	@cd docker && docker-compose exec nginx bash
 
 .PHONY: dc-down
 dc-down: # docker compose down
-	@cd docker && docker-compose down -v --rmi=all --remove-orphans
+	@cd docker && docker-compose down
+
+.PHONY: dc-clean
+dc-clean: # docker compose clean
+	@cd docker && docker rm -f $(docker ps -a -q) && docker volume rm $(docker volume ls -q)
 
 .PHONY: db-create
 db-create:	# schema-create
