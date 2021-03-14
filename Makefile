@@ -1,10 +1,15 @@
 init: # init
-	@cd docker && docker-compose build --force-rm --no-cache
-	make ci
+	@cd docker && docker-compose build --force-rm --no-cache && cd -
+	make ci && cd -
 	@cp -n .env .env.local
-	make db-create
-	make db-update
-	make db-load
+	@cp -n docker/.env.dist .env
+	make db-create && cd -
+	make db-update && cd -
+	make db-load && cd -
+
+.PHONY: dc-start
+dc-start: # docker compose start
+	@cd docker && docker-compose start
 
 dc-up: # docker compose up
 	@cd docker && docker-compose up -d
@@ -23,6 +28,10 @@ dc-exec-php: # up
 
 dc-exec-mysql: # up
 	@cd docker && docker-compose exec mysql bash
+
+.PHONY: dc-down
+dc-down:
+	@cd docker && docker-compose down -v --rmi=all --remove-orphans
 
 db-create:	# schema-create
 	@cd docker && docker-compose exec php bin/console doctrine:database:create --if-not-exists
