@@ -31,3 +31,4 @@ services:
     # please note that last definitions always *replace* previous ones
 
     App\Domain\Player\PlayerRepositoryInterface: '@App\Infrastructure\Doctrine\PlayerRepository'
+    App\Infrastructure\Service\FetchLeaguesInterface: '@App\Infrastructure\Service\FetchLeagues'

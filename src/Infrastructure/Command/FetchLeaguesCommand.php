@@ -3,6 +3,7 @@
 namespace App\Infrastructure\Command;
 
 use App\Application\League\CreateLeagueHandler;
+use App\Infrastructure\Service\FetchLeaguesInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -31,6 +32,8 @@ class FetchLeaguesCommand extends Command
         $this->name = $name;
 
         $this->fetcherService = $fetcherService;
+
+        parent::__construct();
     }
 
 
