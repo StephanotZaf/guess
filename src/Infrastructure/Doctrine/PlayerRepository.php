@@ -10,8 +10,7 @@ use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * Class PlayerRepository
- * @package App\Infrastructure\Doctrine
+ * Class PlayerRepository.
  */
 class PlayerRepository extends ServiceEntityRepository implements PlayerRepositoryInterface
 {
@@ -27,6 +26,7 @@ class PlayerRepository extends ServiceEntityRepository implements PlayerReposito
     /**
      * @param Player $player
      * @return mixed
+     *
      * @throws ORMException
      * @throws OptimisticLockException
      */

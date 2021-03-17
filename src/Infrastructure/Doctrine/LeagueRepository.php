@@ -2,7 +2,7 @@
 
 namespace App\Infrastructure\Doctrine;
 
-use App\Domain\Player\Player;
+use App\Domain\League\League;
 use App\Domain\Player\PlayerRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
@@ -10,8 +10,7 @@ use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * Class LeagueRepository
- * @package App\Infrastructure\Doctrine
+ * Class LeagueRepository.
  */
 class LeagueRepository extends ServiceEntityRepository implements PlayerRepositoryInterface
 {
@@ -21,16 +20,17 @@ class LeagueRepository extends ServiceEntityRepository implements PlayerReposito
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Player::class);
+        parent::__construct($registry, League::class);
     }
 
     /**
-     * @param Player $league
+     * @param League $league
      * @return mixed
+     *
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function save(Player $league)
+    public function save(League $league)
     {
         $this->_em->persist($league);
         $this->_em->flush();

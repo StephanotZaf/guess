@@ -6,18 +6,30 @@ use App\Application\Service\FileUploaderInterface;
 use App\Domain\League\League;
 use App\Domain\League\LeagueRepositoryInterface;
 
+/**
+ * Class CreateLeagueHandler.
+ */
 class CreateLeagueHandler
 {
     private LeagueRepositoryInterface $leagueRepository;
 
     private FileUploaderInterface $logoUploader;
 
+    /**
+     * CreateLeagueHandler constructor.
+     * @param LeagueRepositoryInterface $leagueRepository
+     * @param FileUploaderInterface $logoUploader
+     */
     public function __construct(LeagueRepositoryInterface $leagueRepository, FileUploaderInterface $logoUploader)
     {
         $this->leagueRepository = $leagueRepository;
         $this->logoUploader = $logoUploader;
     }
 
+    /**
+     * @param array $league
+     * @throws \Exception
+     */
     public function handle(array $league): void
     {
         if ($this->leagueRepository->findOneBy(['name' => $league['name']])) {

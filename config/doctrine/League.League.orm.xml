@@ -3,7 +3,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\Domain\League\League" table="league">
+    <entity name="App\Domain\League\League" table="league" repository-class="App\Infrastructure\Doctrine\LeagueRepository">
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
