@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\Player;
+namespace App\Application\Handler\Player;
 
 use App\Domain\Player\Player;
 use App\Domain\Player\PlayerRepositoryInterface;

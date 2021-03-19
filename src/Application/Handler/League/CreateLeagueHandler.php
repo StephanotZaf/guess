@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\League;
+namespace App\Application\Handler\League;
 
 use App\Application\Service\FileUploaderInterface;
 use App\Domain\League\League;

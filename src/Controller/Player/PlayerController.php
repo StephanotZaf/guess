@@ -2,7 +2,7 @@
 
 namespace App\Controller\Player;
 
-use App\Application\Player\CreatePlayerHandler;
+use App\Application\Handler\Player\CreatePlayerHandler;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
