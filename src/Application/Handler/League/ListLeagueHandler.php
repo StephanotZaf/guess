@@ -21,8 +21,7 @@ class ListLeagueHandler
     }
 
     /**
-     * @param array $league
-     * @throws \Exception
+     * @return mixed
      */
     public function handle()
     {

@@ -23,7 +23,7 @@ class FetchLeaguesCommand extends Command
     /**
      * @var string|null
      */
-    private $name;
+    private ?string $name;
 
     private FetchLeaguesInterface $fetcherService;
 
