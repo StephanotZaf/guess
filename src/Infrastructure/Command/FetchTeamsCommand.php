@@ -2,11 +2,9 @@
 
 namespace App\Infrastructure\Command;
 
-use App\Application\Handler\League\CreateLeagueHandler;
 use App\Application\Handler\League\ListLeagueHandler;
 use App\Application\Handler\Team\CreateTeamHandler;
 use App\Domain\League\League;
-use App\Infrastructure\Service\FetchLeaguesInterface;
 use App\Infrastructure\Service\FetchTeamsInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -28,9 +26,9 @@ class FetchTeamsCommand extends Command
 
     /**
      * FetchLeaguesCommand constructor.
-     * @param FetchLeaguesInterface $fetcherService
-     * @param CreateLeagueHandler $createLeagueHandler
-     * @param string|null $name
+     * @param CreateTeamHandler $createTeamHandler
+     * @param FetchTeamsInterface $fetcherService
+     * @param ListLeagueHandler $listLeagueHandler
      */
     public function __construct(CreateTeamHandler $createTeamHandler, FetchTeamsInterface $fetcherService, ListLeagueHandler $listLeagueHandler)
     {
